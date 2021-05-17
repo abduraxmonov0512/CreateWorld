@@ -1,5 +1,6 @@
 package com.CreateWorld.createWorld.models;
 
+import com.CreateWorld.createWorld.models.enums.Status;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -23,4 +24,7 @@ public class BaseEntity {
     @Column(name = "updated")
     private Date updated;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private Status status;
 }

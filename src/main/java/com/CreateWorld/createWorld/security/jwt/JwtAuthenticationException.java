@@ -1,4 +1,4 @@
-package com.CreateWorld.createWorld.security;
+package com.CreateWorld.createWorld.security.jwt;
 
 import org.springframework.security.core.AuthenticationException;
 

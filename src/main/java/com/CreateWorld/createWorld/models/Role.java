@@ -1,10 +1,12 @@
 package com.CreateWorld.createWorld.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "roles")
 @Data

@@ -28,7 +28,7 @@ public class UserService {
     }
 
     public User register(User user){
-        Role role = roleRepository.findByName("ROLE_USER");
+        Role role = roleRepository.findByName("ROLE_ADMIN");
         List<Role> userRoles = new ArrayList<>();
         userRoles.add(role);
         user.setPassword(encoder.encode(user.getPassword()));

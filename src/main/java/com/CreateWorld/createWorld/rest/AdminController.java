@@ -1,6 +1,7 @@
 package com.CreateWorld.createWorld.rest;
 
 
+import com.CreateWorld.createWorld.dto.AddCountryDto;
 import com.CreateWorld.createWorld.models.Country;
 import com.CreateWorld.createWorld.models.Role;
 import com.CreateWorld.createWorld.models.User;
@@ -47,7 +48,7 @@ public class AdminController {
     }
 
     @PostMapping("/addCountry")
-    public ResponseEntity<Country> addCountry(@RequestBody Country country){
-        return ResponseEntity.ok(countryService.save(country));
+    public ResponseEntity<Country> addCountry(@RequestBody AddCountryDto dto){
+        return ResponseEntity.ok(countryService.save(dto));
     }
 }

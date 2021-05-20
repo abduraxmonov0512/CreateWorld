@@ -1,22 +1,24 @@
 package com.CreateWorld.createWorld.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "users")
 @Data
 public class User extends BaseEntity {
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
     @Column(name = "first_name")
     private String firstname;
     @Column(name = "last_name")
     private String lastname;
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
     @Column(name = "password")
     private String password;

@@ -2,6 +2,9 @@ package com.CreateWorld.createWorld.models;
 
 import com.CreateWorld.createWorld.models.enums.Status;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -9,7 +12,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
-@Data
+@Getter
+@Setter
+@ToString
 public class BaseEntity {
 
     @Id

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.CreateWorld.createWorld.models.enums.Status.ACTIVE;
+
 @Service
 @Slf4j
 public class UserService {
@@ -27,16 +29,17 @@ public class UserService {
         this.encoder = encoder;
     }
 
-    public User register(User user){
-        Role role = roleRepository.findByName("ROLE_ADMIN");
-        List<Role> userRoles = new ArrayList<>();
-        userRoles.add(role);
+    public void register(User user){
+//        Role role = roleRepository.findByName("ROLE_ADMIN");
+//        System.out.println(role.getName()+ " ROLE_NAME");
+//        List<Role> userRoles = new ArrayList<>();
+//        userRoles.add(role);
         user.setPassword(encoder.encode(user.getPassword()));
-        user.setRoles(userRoles);
+        user.setStatus(ACTIVE);
+     //   user.setRoles(userRoles);
         User userRegister = userRepository.save(user);
 
         log.info("User successfully registered: {}", userRegister);
-        return userRegister;
     }
 
     public List<User> getAll(){

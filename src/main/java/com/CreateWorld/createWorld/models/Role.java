@@ -13,7 +13,7 @@ import java.util.List;
 @ToString
 public class Role  extends BaseEntity{
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
 //    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)

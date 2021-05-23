@@ -1,6 +1,8 @@
 package com.CreateWorld.createWorld.security.jwt;
 
 import com.CreateWorld.createWorld.models.Role;
+import com.CreateWorld.createWorld.models.User;
+import com.CreateWorld.createWorld.service.UserService;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,8 @@ public class JwtTokenProvider {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    @Autowired
+    private UserService userService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
@@ -42,10 +46,11 @@ public class JwtTokenProvider {
         secret = Base64.getEncoder().encodeToString(secret.getBytes());
     }
 
-    public String createToken(String username, List<Role> roleList){
+    public String createToken(User user){
         log.warn("JwtTokenProvider->createToken()");
-        Claims claims = Jwts.claims().setSubject(username);
-        claims.put("roles", getRoleNames(roleList));
+        Claims claims = Jwts.claims().setSubject(user.getUsername());
+        claims.put("roles", getRoleNames(user.getRoles()));
+        claims.put("id", user.getId());
         Date date = new Date();
         Date validity = new Date(date.getTime() + validityInMilliseconds);
 

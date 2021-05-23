@@ -28,4 +28,13 @@ public class CountryService  {
         country.setStatus(Status.ACTIVE);
         return countryRepository.save(country);
     }
+
+    public Country findCountryById(Long id){
+        return countryRepository.findById(id).orElse(null);
+    }
+
+    public void update(Country country){
+
+        countryRepository.save(country);
+    }
 }

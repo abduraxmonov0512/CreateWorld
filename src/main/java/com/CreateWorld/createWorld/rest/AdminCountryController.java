@@ -37,7 +37,7 @@ public class AdminCountryController {
 
     @PostMapping("/AddRegionLeader")
     public ResponseEntity<String> addLeader(@RequestBody User user){
-        Role role = roleRepository.findByName("ROLE_ADMIN_DISTRICT");
+        Role role = roleRepository.findByName("ROLE_ADMIN_REGION");
         user.setRoles(Collections.singletonList(role));
         userService.register(user);
         return ResponseEntity.ok("created");

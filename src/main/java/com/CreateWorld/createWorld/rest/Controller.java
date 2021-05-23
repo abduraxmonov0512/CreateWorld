@@ -48,7 +48,7 @@ public class Controller {
             if (user == null) {
                 throw new NotFoundException("User not found");
             }
-            String token = jwtTokenProvider.createToken(username, user.getRoles());
+            String token = jwtTokenProvider.createToken(user);
 
             Map<Object, Object> response = new HashMap<>();
             response.put("username", username);

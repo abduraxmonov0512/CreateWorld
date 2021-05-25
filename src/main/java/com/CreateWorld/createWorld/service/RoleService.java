@@ -16,4 +16,8 @@ public class RoleService {
         role.setStatus(Status.ACTIVE);
         roleRepository.save(role);
     }
+
+    public Role findRoleByName(String name){
+        return roleRepository.findByName(name);
+    }
 }

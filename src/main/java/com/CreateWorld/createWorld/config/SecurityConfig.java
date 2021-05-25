@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static final String ADMIN_COUNTRY_ENDPOINT = "/api/adminCountry/***";
     private static final String LOGIN_ENDPOINT = "/api/auth/**";
     public static final String ADMIN_REGION_ENDPOINT = "/api/adminRegion/***";
+    public static final String ADMIN_DISTRICT_ENDPOINT = "/api/adminDistrict/**";
 
     @Autowired
     public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
@@ -46,6 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(LOGIN_ENDPOINT).permitAll()
                 .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
                 .antMatchers(ADMIN_COUNTRY_ENDPOINT).hasRole("ADMIN_COUNTRY")
+                .antMatchers(ADMIN_REGION_ENDPOINT).hasRole("ADMIN_REGION")
+                .antMatchers(ADMIN_DISTRICT_ENDPOINT).hasRole("ADMIN_DISTRICT")
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));

@@ -38,5 +38,12 @@ public class RegionService {
         return regionRepository.save(region);
     }
 
+    public Region findById(Long id){
+        return regionRepository.findById(id).get();
+    }
+
+    public void updateRegion(Region region){
+        regionRepository.save(region);
+    }
 
 }

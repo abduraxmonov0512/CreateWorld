@@ -34,6 +34,7 @@ public class UserService {
 //        System.out.println(role.getName()+ " ROLE_NAME");
 //        List<Role> userRoles = new ArrayList<>();
 //        userRoles.add(role);
+        System.out.println(user.getPassword() + " PASSWORD");
         user.setPassword(encoder.encode(user.getPassword()));
         user.setStatus(ACTIVE);
      //   user.setRoles(userRoles);

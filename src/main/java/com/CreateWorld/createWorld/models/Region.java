@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -17,5 +18,12 @@ public class Region extends BaseEntity{
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "region_districts",
+            joinColumns = {@JoinColumn(name = "region_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "district_id", referencedColumnName = "id")})
+    private List<District> districts;
 
 }

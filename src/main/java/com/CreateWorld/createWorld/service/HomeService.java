@@ -30,4 +30,11 @@ public class HomeService {
         return result;
     }
 
+    public Home findById(Long id){
+        return homeRepository.findById(id).get();
+    }
+
+    public void update(Home home){
+        homeRepository.save(home);
+    }
 }

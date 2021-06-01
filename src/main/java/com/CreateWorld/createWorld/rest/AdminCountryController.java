@@ -6,28 +6,28 @@ import com.CreateWorld.createWorld.models.Role;
 import com.CreateWorld.createWorld.models.User;
 import com.CreateWorld.createWorld.repositories.RoleRepository;
 import com.CreateWorld.createWorld.service.RegionService;
-import com.CreateWorld.createWorld.service.RoleService;
 import com.CreateWorld.createWorld.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 @RestController
 @RequestMapping("/api/adminCountry")
 public class AdminCountryController {
 
-    @Autowired
+
     private RegionService regionService;
-    @Autowired
     private UserService userService;
-    @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    public AdminCountryController(RegionService regionService, UserService userService, RoleRepository roleRepository) {
+        this.regionService = regionService;
+        this.userService = userService;
+        this.roleRepository = roleRepository;
+    }
 
 
     @PostMapping("/addRegion")
@@ -43,4 +43,9 @@ public class AdminCountryController {
         return ResponseEntity.ok("created");
     }
 
+
+    @GetMapping("/regions")
+    public ResponseEntity<Iterable<Region>> getRegions(){
+        return ResponseEntity.ok(regionService.findAll());
+    }
 }

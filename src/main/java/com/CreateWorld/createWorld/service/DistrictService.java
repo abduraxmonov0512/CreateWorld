@@ -40,4 +40,8 @@ public class DistrictService {
         regionService.updateRegion(region);
         return districtRepository.save(result);
     }
+
+    public Iterable<District> findAll(){
+         return districtRepository.findAll();
+    }
 }

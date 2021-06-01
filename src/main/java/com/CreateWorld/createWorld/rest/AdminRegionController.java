@@ -11,10 +11,7 @@ import com.CreateWorld.createWorld.service.RoleService;
 import com.CreateWorld.createWorld.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,5 +47,10 @@ public class AdminRegionController {
     @PostMapping("/createDistrict")
     public ResponseEntity<District> createDistrict(@RequestBody DistrictDto dto){
         return ResponseEntity.ok(districtService.saveDistrict(dto));
+    }
+
+    @GetMapping("/districts")
+    public ResponseEntity<Iterable<District>> getAllDistricts(){
+        return ResponseEntity.ok(districtService.findAll());
     }
 }

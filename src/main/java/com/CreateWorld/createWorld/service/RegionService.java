@@ -46,4 +46,8 @@ public class RegionService {
         regionRepository.save(region);
     }
 
+    public Iterable<Region> findAll(){
+        return regionRepository.findAll();
+    }
+
 }

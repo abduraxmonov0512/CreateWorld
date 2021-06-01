@@ -8,6 +8,8 @@ import com.CreateWorld.createWorld.repositories.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CountryService  {
 
@@ -36,5 +38,9 @@ public class CountryService  {
     public void update(Country country){
 
         countryRepository.save(country);
+    }
+
+    public Iterable<Country> getAllCountries(){
+        return countryRepository.findAll();
     }
 }
